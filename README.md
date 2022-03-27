@@ -1,6 +1,6 @@
 # OWASP Secure Headers Project validator
 
-[![Validate test suites](https://github.com/righettod/oshp-validator/actions/workflows/validate-tests-suite.yml/badge.svg?branch=main)](https://github.com/righettod/oshp-validator/actions/workflows/validate-tests-suite.yml)
+[![Validate test suites](https://github.com/oshp/oshp-validator/actions/workflows/validate-tests-suite.yml/badge.svg?branch=main)](https://github.com/oshp/oshp-validator/actions/workflows/validate-tests-suite.yml)
 
 [Venom](https://github.com/ovh/venom) test suites to validate an [HTTP security response headers](https://owasp.org/www-project-secure-headers/#div-headers) configuration against [OSHP recommendation](https://owasp.org/www-project-secure-headers/#div-bestpractices).
 
@@ -56,7 +56,7 @@ $ venom run --var="target_site=https://mysite.com" --var="logout_url=/logout" te
 
 :speech_balloon: Hints:
 
-Venom return a code different from zero when a test fail or when you try an update and your version is the latest one. Therefore, to prevent your script to fail then add `|| true` at the end of your command.
+Venom returns a code different from zero when a test fail or when you try an update and your version is the latest one. Therefore, to prevent your script to fail then add `|| true` at the end of your command.
 
 # Reporting
 
