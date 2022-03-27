@@ -17,5 +17,5 @@ jobs:
           ./venom update || true
       - name: Execute the test plan
         run: |
-          ./venom run --var="target_site=https://righettod.eu" --var="internet_facing=true" --var="logout_url=/logout" tests_suite.yml
+          ./venom run --var="target_site=https://righettod.eu" --var="internet_facing=true" --var="logout_url=/logout" tests_suite.yml || true
 
