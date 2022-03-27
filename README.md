@@ -21,6 +21,8 @@ We chose to leverage this tool for the following reasons:
 
 It is provided via this [single file](tests_suite.yml).
 
+[Visual Studio Code](https://code.visualstudio.com/) is used for the test suites development. A Visual Studio Code [workspace file](project.code-workspace) is provided for the project.
+
 The following parameters are supported:
 
 | **Parameter name**         |                                                                **Description**                                                                                              | **Default value** | **Mandatory** |
