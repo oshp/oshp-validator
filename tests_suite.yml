@@ -43,7 +43,7 @@ testcases:
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.x-frame-options ShouldNotBeNil
-    - result.headers.x-frame-options ShouldEqual "deny"
+    - result.headers.x-frame-options ShouldBeIn "deny" "DENY"
 - name: X-Content-Type-Options
   steps:
   - type: http
