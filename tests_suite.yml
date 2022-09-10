@@ -1,13 +1,14 @@
 name: HTTP security response headers test suites
 # TOOLS
-# VENOM HOME: https://github.com/ovh/venom
-# VENOM RELEASE: https://github.com/ovh/venom/releases
-# VENOM ASSERTION KEYWORDS: https://github.com/ovh/venom#assertion
+#   VENOM HOME: https://github.com/ovh/venom
+#   VENOM RELEASE: https://github.com/ovh/venom/releases
+#   VENOM ASSERTION KEYWORDS: https://github.com/ovh/venom#assertion
 # REF AND RUN
-# REF BASE: https://owasp.org/www-project-secure-headers/
-# RUN CMD: venom run --var="target_site=https://righettod.eu" venom_security_headers_tests_suite.yml 
-#          venom run --var="target_site=https://righettod.eu" --var="internet_facing=true" venom_security_headers_tests_suite.yml 
-#          venom run --var="target_site=https://righettod.eu" --var="internet_facing=true" --var="logout_url=/logout" venom_security_headers_tests_suite.yml 
+#   REF BASE: https://owasp.org/www-project-secure-headers/
+#   RUN CMD:
+#       venom run --var="target_site=https://righettod.eu" tests_suite.yml
+#       venom run --var="target_site=https://righettod.eu" --var="internet_facing=true" tests_suite.yml
+#       venom run --var="target_site=https://righettod.eu" --var="internet_facing=true" --var="logout_url=/logout" tests_suite.yml
 vars:
   target_site: ""
   logout_url: ""
@@ -28,10 +29,7 @@ testcases:
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.strict-transport-security ShouldNotBeNil
-    - result.headers.strict-transport-security ShouldContainSubstring "includeSubDomains"
-    - result.headers.strict-transport-security ShouldContainSubstring "max-age="
-    - result.headers.strict-transport-security ShouldNotContainSubstring "max-age=0"
-    - result.headers.strict-transport-security ShouldContainSubstring "preload"
+    - result.headers.strict-transport-security ShouldEqual "max-age=31536000 ; includeSubDomains"
 - name: X-Frame-Options
   steps:
   - type: http
@@ -103,8 +101,7 @@ testcases:
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.clear-site-data ShouldNotBeNil
-    - result.headers.clear-site-data ShouldContainSubstring "cookies"
-    - result.headers.clear-site-data ShouldContainSubstring "storage"
+    - result.headers.clear-site-data ShouldEqual '"cache","cookies","storage"'
 - name: Cross-Origin-Embedder-Policy
   steps:
   - type: http
@@ -152,7 +149,7 @@ testcases:
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.permissions-policy ShouldNotBeNil
-    - result.headers.permissions-policy ShouldNotContainSubstring "*"
+    - result.headers.permissions-policy ShouldEqual "accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),gamepad=(),geolocation=(),gyroscope=(),layout-animations=(self),legacy-image-formats=(self),magnetometer=(),microphone=(),midi=(),oversized-images=(self),payment=(),picture-in-picture=(),publickey-credentials-get=(),speaker-selection=(),screen-wake-lock=(),sync-xhr=(self),unoptimized-images=(self),unsized-media=(self),usb=(),web-share=(),xr-spatial-tracking=()"
 - name: Cache-Control
   steps:
   - type: http
@@ -164,7 +161,7 @@ testcases:
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.cache-control ShouldNotBeNil
-    - result.headers.cache-control ShouldEqual "no-store"    
+    - result.headers.cache-control ShouldEqual "no-store, max-age=0"    
 ###############################################
 ## DEPRECATED OR ALMOST DEPRECATED HEADERS
 ###############################################
@@ -174,7 +171,7 @@ testcases:
     method: GET
     url: {{.target_site}}
     skip_body: true
-    info: This header was split into Permissions-Policy and Document-Policy and will be considered deprecated once all impacted features are moved off of feature policy.
+    info: This header has now been renamed to Permissions-Policy in the specification.
     timeout: {{.request_timeout_in_seconds}}
     assertions:
     - result.statuscode ShouldEqual 200    
