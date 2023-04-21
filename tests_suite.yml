@@ -1,228 +1,219 @@
 name: HTTP security response headers test suites
-# TOOLS
-#   VENOM HOME: https://github.com/ovh/venom
-#   VENOM RELEASE: https://github.com/ovh/venom/releases
-#   VENOM ASSERTION KEYWORDS: https://github.com/ovh/venom#assertion
-# REF AND RUN
-#   REF BASE: https://owasp.org/www-project-secure-headers/
-#   RUN CMD:
-#       venom run --var="target_site=https://righettod.eu" tests_suite.yml
-#       venom run --var="target_site=https://righettod.eu" --var="internet_facing=true" tests_suite.yml
-#       venom run --var="target_site=https://righettod.eu" --var="internet_facing=true" --var="logout_url=/logout" tests_suite.yml
 vars:
-  target_site: ""
-  logout_url: ""
+  target_site: ''
+  logout_url: ''
   internet_facing: false
   request_timeout_in_seconds: 20
 testcases:
-###############################################
-## ACTIVE RECOMMENDED AND WORKING DRAFT HEADERS
-###############################################
-- name: Strict-Transport-Security
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.strict-transport-security ShouldNotBeNil
-    - result.headers.strict-transport-security ShouldEqual "max-age=31536000 ; includeSubDomains"
-- name: X-Frame-Options
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.x-frame-options ShouldNotBeNil
-    - result.headers.x-frame-options ShouldBeIn "deny" "DENY"
-- name: X-Content-Type-Options
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.x-content-type-options ShouldNotBeNil
-    - result.headers.x-content-type-options ShouldEqual "nosniff"
-- name: Content-Security-Policy
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.content-security-policy ShouldNotBeNil
-    - result.headers.content-security-policy ShouldNotContainSubstring "unsafe"    
-- name: X-Permitted-Cross-Domain-Policies
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.x-permitted-cross-domain-policies ShouldNotBeNil
-    - result.headers.x-permitted-cross-domain-policies ShouldEqual "none"
-- name: Referrer-Policy
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.referrer-policy ShouldNotBeNil
-    - result.headers.referrer-policy ShouldEqual "no-referrer"
-- name: Clear-Site-Data
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}/{{.logout_url}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.clear-site-data ShouldNotBeNil
-    - result.headers.clear-site-data ShouldEqual '"cache","cookies","storage"'
-- name: Cross-Origin-Embedder-Policy
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.cross-origin-embedder-policy ShouldNotBeNil
-    - result.headers.cross-origin-embedder-policy ShouldEqual "require-corp"
-- name: Cross-Origin-Opener-Policy
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.cross-origin-opener-policy ShouldNotBeNil
-    - result.headers.cross-origin-opener-policy ShouldEqual "same-origin"
-- name: Cross-Origin-Resource-Policy
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.cross-origin-resource-policy ShouldNotBeNil
-    - result.headers.cross-origin-resource-policy ShouldEqual "same-origin"
-- name: Permissions-Policy
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.permissions-policy ShouldNotBeNil
-    - result.headers.permissions-policy ShouldEqual "accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),gamepad=(),geolocation=(),gyroscope=(),layout-animations=(self),legacy-image-formats=(self),magnetometer=(),microphone=(),midi=(),oversized-images=(self),payment=(),picture-in-picture=(),publickey-credentials-get=(),speaker-selection=(),screen-wake-lock=(),sync-xhr=(self),unoptimized-images=(self),unsized-media=(self),usb=(),web-share=(),xr-spatial-tracking=()"
-- name: Cache-Control
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    #info: Header are {{.result.headers}}
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.cache-control ShouldNotBeNil
-    - result.headers.cache-control ShouldEqual "no-store, max-age=0"    
-###############################################
-## DEPRECATED OR ALMOST DEPRECATED HEADERS
-###############################################
-- name: Feature-Policy
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    info: This header has now been renamed to Permissions-Policy in the specification.
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.feature-policy ShouldBeNil
-- name: Public-Key-Pins
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    info: This header has been deprecated by all major browsers and is no longer recommended. Avoid using it, and update existing code if possible!
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.public-key-pins ShouldBeNil
-- name: Expect-CT
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    info: This header will likely become obsolete in June 2021. Since May 2018 new certificates are expected to support SCTs by default. Certificates before March 2018 were allowed to have a lifetime of 39 months, those will all be expired in June 2021.
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.expect-ct ShouldBeNil
-- name: X-Xss-Protection
-  steps:
-  - type: http
-    method: GET
-    url: "{{.target_site}}"
-    skip_body: true
-    info: The X-XSS-Protection header has been deprecated by modern browsers and its use can introduce additional security issues on the client side.
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.x-xss-protection ShouldBeNil
-###############################################
-## EXTRA TEST FOR INTERNET EXPOSED APP
-## CHECK SECURITYHEADERS.COM RATING
-###############################################
-- name: SecurityHeaders-Rating
-  skip: 
-    - internet_facing ShouldEqual true
-  steps:
-  - type: http
-    method: GET
-    url: https://securityheaders.com/?q={{.target_site}}&hide=on&followRedirects=on
-    skip_body: true
-    timeout: "{{.request_timeout_in_seconds}}"
-    assertions:
-    - result.statuscode ShouldEqual 200    
-    - result.headers.x-grade ShouldNotBeNil
-    - result.headers.x-grade ShouldEqual "A"
+  - name: Strict-Transport-Security
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.strict-transport-security ShouldNotBeNil
+          - >-
+            result.headers.strict-transport-security ShouldEqual
+            "max-age=31536000 ; includeSubDomains"
+  - name: X-Frame-Options
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.x-frame-options ShouldNotBeNil
+          - result.headers.x-frame-options ShouldBeIn "deny" "DENY"
+  - name: X-Content-Type-Options
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.x-content-type-options ShouldNotBeNil
+          - result.headers.x-content-type-options ShouldEqual "nosniff"
+  - name: Content-Security-Policy
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.content-security-policy ShouldNotBeNil
+          - >-
+            result.headers.content-security-policy ShouldNotContainSubstring
+            "unsafe"
+  - name: X-Permitted-Cross-Domain-Policies
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.x-permitted-cross-domain-policies ShouldNotBeNil
+          - result.headers.x-permitted-cross-domain-policies ShouldEqual "none"
+  - name: Referrer-Policy
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.referrer-policy ShouldNotBeNil
+          - result.headers.referrer-policy ShouldEqual "no-referrer"
+  - name: Clear-Site-Data
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}/{{.logout_url}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.clear-site-data ShouldNotBeNil
+          - >-
+            result.headers.clear-site-data ShouldEqual
+            '"cache","cookies","storage"'
+  - name: Cross-Origin-Embedder-Policy
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.cross-origin-embedder-policy ShouldNotBeNil
+          - >-
+            result.headers.cross-origin-embedder-policy ShouldEqual
+            "require-corp"
+  - name: Cross-Origin-Opener-Policy
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.cross-origin-opener-policy ShouldNotBeNil
+          - result.headers.cross-origin-opener-policy ShouldEqual "same-origin"
+  - name: Cross-Origin-Resource-Policy
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.cross-origin-resource-policy ShouldNotBeNil
+          - >-
+            result.headers.cross-origin-resource-policy ShouldEqual
+            "same-origin"
+  - name: Permissions-Policy
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.permissions-policy ShouldNotBeNil
+          - >-
+            result.headers.permissions-policy ShouldEqual
+            "accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),gamepad=(),geolocation=(),gyroscope=(),layout-animations=(self),legacy-image-formats=(self),magnetometer=(),microphone=(),midi=(),oversized-images=(self),payment=(),picture-in-picture=(),publickey-credentials-get=(),speaker-selection=(),screen-wake-lock=(),sync-xhr=(self),unoptimized-images=(self),unsized-media=(self),usb=(),web-share=(),xr-spatial-tracking=()"
+  - name: Cache-Control
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.cache-control ShouldNotBeNil
+          - 'result.headers.cache-control ShouldEqual "no-store, max-age=0"'
+  - name: Feature-Policy
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        info: >-
+          This header has now been renamed to Permissions-Policy in the
+          specification.
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.feature-policy ShouldBeNil
+  - name: Public-Key-Pins
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        info: >-
+          This header has been deprecated by all major browsers and is no longer
+          recommended. Avoid using it, and update existing code if possible!
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.public-key-pins ShouldBeNil
+  - name: Expect-CT
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        info: >-
+          This header will likely become obsolete in June 2021. Since May 2018
+          new certificates are expected to support SCTs by default. Certificates
+          before March 2018 were allowed to have a lifetime of 39 months, those
+          will all be expired in June 2021.
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.expect-ct ShouldBeNil
+  - name: X-Xss-Protection
+    steps:
+      - type: http
+        method: GET
+        url: '{{.target_site}}'
+        skip_body: true
+        info: >-
+          The X-XSS-Protection header has been deprecated by modern browsers and
+          its use can introduce additional security issues on the client side.
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.x-xss-protection ShouldBeNil
+  - name: SecurityHeaders-Rating
+    skip:
+      - internet_facing ShouldEqual true
+    steps:
+      - type: http
+        method: GET
+        url: >-
+          https://securityheaders.com/?q={{.target_site}}&hide=on&followRedirects=on
+        skip_body: true
+        timeout: '{{.request_timeout_in_seconds}}'
+        assertions:
+          - result.statuscode ShouldEqual 200
+          - result.headers.x-grade ShouldNotBeNil
+          - result.headers.x-grade ShouldEqual "A"
