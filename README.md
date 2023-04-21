@@ -68,4 +68,4 @@ This [section](https://github.com/ovh/venom#export-tests-report) of the venom do
 
 The python script [test_suite_mock.py](test_suite_mock.py) provide a mock endpoint returning a HTTP response, for which, all HTTP response headers recommanded by the [OSHP](https://owasp.org/www-project-secure-headers/) will be set.
 
-📦 It is automatically deployed on `https://oshp-validator-mock.onrender.com/` and it is used, by this [CI workflow](.github\workflows\validate-tests-suite.yml), to test the venom tests suite.
+📦 It is automatically deployed on `https://oshp-validator-mock.onrender.com/` and it is used, by this [CI workflow](.github/workflows/validate-tests-suite.yml), to test the venom tests suite.
