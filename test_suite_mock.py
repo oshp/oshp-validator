@@ -1,5 +1,5 @@
 """
-Simple mock endpoint to all HTTP response headers recommanded by the OSHP
+Simple mock endpoint returning a HTTP response, for which, all HTTP response headers recommanded by the OSHP will be set.
 
 Dependencies:
     pip install requests flask
@@ -13,7 +13,6 @@ Run (PowerShell):
     PS> flask run --host=localhost --port=80 --eager-loading --no-reload --no-debugger --with-threads
 """
 import io
-import flask
 import requests
 import base64
 from flask import Flask, Response, send_file
