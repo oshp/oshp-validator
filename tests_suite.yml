@@ -15,9 +15,7 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.strict-transport-security ShouldNotBeNil
-          - >-
-            result.headers.strict-transport-security ShouldEqual
-            "max-age=31536000 ; includeSubDomains"
+          - result.headers.strict-transport-security ShouldEqual "max-age=31536000 ; includeSubDomains"
   - name: X-Frame-Options
     steps:
       - type: http
@@ -50,9 +48,7 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.content-security-policy ShouldNotBeNil
-          - >-
-            result.headers.content-security-policy ShouldNotContainSubstring
-            "unsafe"
+          - result.headers.content-security-policy ShouldNotContainSubstring "unsafe"
   - name: X-Permitted-Cross-Domain-Policies
     steps:
       - type: http
@@ -85,9 +81,7 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.clear-site-data ShouldNotBeNil
-          - >-
-            result.headers.clear-site-data ShouldEqual
-            '"cache","cookies","storage"'
+          - result.headers.clear-site-data ShouldEqual '"cache","cookies","storage"'
   - name: Cross-Origin-Embedder-Policy
     steps:
       - type: http
@@ -98,9 +92,7 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.cross-origin-embedder-policy ShouldNotBeNil
-          - >-
-            result.headers.cross-origin-embedder-policy ShouldEqual
-            "require-corp"
+          - result.headers.cross-origin-embedder-policy ShouldEqual "require-corp"
   - name: Cross-Origin-Opener-Policy
     steps:
       - type: http
@@ -122,9 +114,7 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.cross-origin-resource-policy ShouldNotBeNil
-          - >-
-            result.headers.cross-origin-resource-policy ShouldEqual
-            "same-origin"
+          - result.headers.cross-origin-resource-policy ShouldEqual "same-origin"
   - name: Permissions-Policy
     steps:
       - type: http
@@ -135,9 +125,7 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.permissions-policy ShouldNotBeNil
-          - >-
-            result.headers.permissions-policy ShouldEqual
-            "accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),gamepad=(),geolocation=(),gyroscope=(),layout-animations=(self),legacy-image-formats=(self),magnetometer=(),microphone=(),midi=(),oversized-images=(self),payment=(),picture-in-picture=(),publickey-credentials-get=(),speaker-selection=(),screen-wake-lock=(),sync-xhr=(self),unoptimized-images=(self),unsized-media=(self),usb=(),web-share=(),xr-spatial-tracking=()"
+          - result.headers.permissions-policy ShouldEqual "accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),gamepad=(),geolocation=(),gyroscope=(),layout-animations=(self),legacy-image-formats=(self),magnetometer=(),microphone=(),midi=(),oversized-images=(self),payment=(),picture-in-picture=(),publickey-credentials-get=(),speaker-selection=(),screen-wake-lock=(),sync-xhr=(self),unoptimized-images=(self),unsized-media=(self),usb=(),web-share=(),xr-spatial-tracking=()"
   - name: Cache-Control
     steps:
       - type: http
