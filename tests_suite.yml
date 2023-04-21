@@ -203,4 +203,4 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.body ShouldContainSubstring '<div class="score_green"><span>A</span></div>'
+          - result.body ShouldContainSubstring '<div class="score_lightgreen"><span>A+</span></div>'
