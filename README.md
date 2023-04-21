@@ -4,13 +4,15 @@
 
 [Venom](https://github.com/ovh/venom) test suites to validate an [HTTP security response headers](https://owasp.org/www-project-secure-headers/#div-headers) configuration against [OSHP recommendation](https://owasp.org/www-project-secure-headers/#div-bestpractices).
 
-The objective is to provide a way to validate the configuration of non-Internet exposed applications in a flexible/portable way.
+🎯 The objective is to provide a way to validate the configuration of non-Internet exposed applications in a flexible/portable way.
 
-You can use the provided test suites, as a foundation, to tailor it to your context.
+💡 You can use the provided test suites, as a foundation, to tailor it to your context.
+
+📑 Syntax for the test suitesfile is validated using this [yamllint](https://yamllint.readthedocs.io) configuration [file](.yamllint).
 
 # Why venom?
 
-We chose to leverage this tool for the following reasons:
+🤔 We chose to leverage this tool for the following reasons:
 
 * It is free and open source.
 * It does not need any installation: Standalone binary file provided but you can easily compile it if you want a full control over the binary executed.
@@ -19,13 +21,13 @@ We chose to leverage this tool for the following reasons:
 
 # Tests suite
 
-> :information_source: This tests suite is always synchronized with the latest OSHP recommendation.
+> **Note**: This tests suite is always synchronized with the latest OSHP recommendation.
 
-It is provided via this [single file](tests_suite.yml).
+📋 It is provided via this [single file](tests_suite.yml).
 
-[Visual Studio Code](https://code.visualstudio.com/) is used for the tests suite development. A Visual Studio Code [workspace file](project.code-workspace) is provided for the project with [recommended extensions](.vscode/extensions.json).
+💻 [Visual Studio Code](https://code.visualstudio.com/) is used for the tests suite development. A Visual Studio Code [workspace file](project.code-workspace) is provided for the project with [recommended extensions](.vscode/extensions.json).
 
-The following parameters are supported:
+📐 The following parameters are supported:
 
 | **Parameter name**         |                                                                **Description**                                                                                              | **Default value** | **Mandatory** |
 |----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|---------------|
@@ -36,7 +38,7 @@ The following parameters are supported:
 
 # How to use it?
 
-Follow the steps below.
+💻 Follow the steps below.
 
 1. Get a [release of venom](https://github.com/ovh/venom#installing) for your platform.
 2. Run one the following commands corresponding to your context:
