@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get yamllint
+        run: |
+          sudo apt-get install -y wget yamllint
+      - name: Validate the Venom test suite file using custom configuation
+        run: |
+          yamllint tests_suite.yml         
       - name: Get venom
         run: |
           wget -q -O venom https://github.com/ovh/venom/releases/download/v1.0.1/venom.linux-amd64
