@@ -1,6 +1,8 @@
 name: Validate test suites
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 6'  
   push:
     branches: [ main ]
   pull_request:
