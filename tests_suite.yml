@@ -22,10 +22,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.strict-transport-security ShouldNotBeNil
@@ -34,10 +34,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.x-frame-options ShouldNotBeNil
@@ -46,10 +46,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.x-content-type-options ShouldNotBeNil
@@ -58,10 +58,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.content-security-policy ShouldNotBeNil
@@ -70,10 +70,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.x-permitted-cross-domain-policies ShouldNotBeNil
@@ -82,10 +82,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.referrer-policy ShouldNotBeNil
@@ -94,10 +94,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}/{{.logout_url}}
+    url: "{{.target_site}}/{{.logout_url}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.clear-site-data ShouldNotBeNil
@@ -106,10 +106,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.cross-origin-embedder-policy ShouldNotBeNil
@@ -118,10 +118,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.cross-origin-opener-policy ShouldNotBeNil
@@ -130,10 +130,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.cross-origin-resource-policy ShouldNotBeNil
@@ -142,10 +142,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.permissions-policy ShouldNotBeNil
@@ -154,10 +154,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     #info: Header are {{.result.headers}}
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.cache-control ShouldNotBeNil
@@ -169,10 +169,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     info: This header has now been renamed to Permissions-Policy in the specification.
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.feature-policy ShouldBeNil
@@ -180,10 +180,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     info: This header has been deprecated by all major browsers and is no longer recommended. Avoid using it, and update existing code if possible!
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.public-key-pins ShouldBeNil
@@ -191,10 +191,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     info: This header will likely become obsolete in June 2021. Since May 2018 new certificates are expected to support SCTs by default. Certificates before March 2018 were allowed to have a lifetime of 39 months, those will all be expired in June 2021.
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.expect-ct ShouldBeNil
@@ -202,10 +202,10 @@ testcases:
   steps:
   - type: http
     method: GET
-    url: {{.target_site}}
+    url: "{{.target_site}}"
     skip_body: true
     info: The X-XSS-Protection header has been deprecated by modern browsers and its use can introduce additional security issues on the client side.
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.x-xss-protection ShouldBeNil
@@ -221,7 +221,7 @@ testcases:
     method: GET
     url: https://securityheaders.com/?q={{.target_site}}&hide=on&followRedirects=on
     skip_body: true
-    timeout: {{.request_timeout_in_seconds}}
+    timeout: "{{.request_timeout_in_seconds}}"
     assertions:
     - result.statuscode ShouldEqual 200    
     - result.headers.x-grade ShouldNotBeNil
