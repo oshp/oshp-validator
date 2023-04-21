@@ -34,7 +34,7 @@ def load_headers():
 
 @app.route("/favicon.ico")
 def get_favicon():
-    return send_file(io.BytesIO(base64.b64decode(FAVICON_B64)), attachment_filename="favicon.jpeg", mimetype="image/jpg")
+    return send_file(io.BytesIO(base64.b64decode(FAVICON_B64)), mimetype="image/jpg")
 
 
 @app.route('/')
@@ -42,3 +42,4 @@ def mirror():
     oshp_headers = load_headers()
     resp = Response(response="OK", headers=oshp_headers, content_type="text/plain")
     return resp
+
