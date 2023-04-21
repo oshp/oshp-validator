@@ -1,5 +1,5 @@
 """
-Simple mock endpoint returning a HTTP response, for which, all HTTP response headers recommanded by the OSHP will be set.
+Simple mock endpoint returning a HTTP response, for which, all HTTP response headers recommended by the OSHP will be set.
 
 Dependencies:
     pip install requests flask

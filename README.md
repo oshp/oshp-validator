@@ -56,7 +56,7 @@ $ venom run --var="target_site=https://mysite.com" --var="logout_url=/logout" te
 
 [![asciicast](https://asciinema.org/a/391137.svg)](https://asciinema.org/a/391137)
 
-:speech_balloon: Hints:
+💡 **Hints:**
 
 Venom returns a code different from zero when a test fail or when you try an update and your version is the latest one. Therefore, to prevent your script to fail then add `|| true` at the end of your command.
 
@@ -66,6 +66,6 @@ This [section](https://github.com/ovh/venom#export-tests-report) of the venom do
 
 # Tests suite mock service
 
-The python script [test_suite_mock.py](test_suite_mock.py) provide a mock endpoint returning a HTTP response, for which, all HTTP response headers recommanded by the [OSHP](https://owasp.org/www-project-secure-headers/) will be set.
+The python script [test_suite_mock.py](test_suite_mock.py) provides a mock endpoint returning an HTTP response, for which, all HTTP response headers recommended by the [OSHP](https://owasp.org/www-project-secure-headers/) will be set.
 
 📦 It is automatically deployed on `https://oshp-validator-mock.onrender.com/` and it is used, by this [CI workflow](.github/workflows/validate-tests-suite.yml), to test the venom tests suite.
