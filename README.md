@@ -63,3 +63,9 @@ Venom returns a code different from zero when a test fail or when you try an upd
 # Reporting
 
 This [section](https://github.com/ovh/venom#export-tests-report) of the venom documentation describes the different formats supported for the integration in a CI/CD platform.
+
+# Tests suite mock service
+
+The python script [test_suite_mock.py](test_suite_mock.py) provide a mock endpoint returning a HTTP response, for which, all HTTP response headers recommanded by the [OSHP](https://owasp.org/www-project-secure-headers/) will be set.
+
+📦 It is automatically deployed on `https://oshp-validator-mock.onrender.com/` and it is used, by this [CI workflow](.github\workflows\validate-tests-suite.yml), to test the venom tests suite.
