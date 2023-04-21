@@ -211,9 +211,8 @@ testcases:
         method: GET
         url: >-
           https://securityheaders.com/?q={{.target_site}}&hide=on&followRedirects=on
-        skip_body: true
+        skip_body: false
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.x-grade ShouldNotBeNil
-          - result.headers.x-grade ShouldEqual "A"
+          - result.body ShouldContainSubstring '<div class="score_green"><span>A</span></div>'
