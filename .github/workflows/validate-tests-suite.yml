@@ -12,9 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Get yamllint
+      - name: Get yamllint and wake-up the mirror endpoint
         run: |
-          sudo apt-get install -y wget yamllint
+          sudo apt-get install -y curl wget yamllint
+          curl --connect-timeout 600 -sk https://oshp-validator-mock.onrender.com
       - name: Validate the Venom test suite file using custom configuation
         run: |
           yamllint --strict tests_suite.yml         
