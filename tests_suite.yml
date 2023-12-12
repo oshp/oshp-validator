@@ -15,7 +15,7 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.strict-transport-security ShouldNotBeNil
-          - result.headers.strict-transport-security ShouldEqual "max-age=31536000 ; includeSubDomains"
+          - result.headers.strict-transport-security ShouldEqual "max-age=31536000; includeSubDomains"
   - name: X-Frame-Options
     steps:
       - type: http
