@@ -14,8 +14,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.strict-transport-security ShouldNotBeNil
-          - result.headers.strict-transport-security ShouldEqual "max-age=31536000; includeSubDomains"
+          - result.headers.Strict-Transport-Security ShouldNotBeNil
+          - result.headers.Strict-Transport-Security ShouldEqual "max-age=31536000; includeSubDomains"
   - name: X-Frame-Options
     steps:
       - type: http
@@ -25,8 +25,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.x-frame-options ShouldNotBeNil
-          - result.headers.x-frame-options ShouldBeIn "deny" "DENY"
+          - result.headers.X-Frame-Options ShouldNotBeNil
+          - result.headers.X-Frame-Options ShouldBeIn "deny" "DENY"
   - name: X-Content-Type-Options
     steps:
       - type: http
@@ -36,8 +36,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.x-content-type-options ShouldNotBeNil
-          - result.headers.x-content-type-options ShouldEqual "nosniff"
+          - result.headers.X-Content-Type-Options ShouldNotBeNil
+          - result.headers.X-Content-Type-Options ShouldEqual "nosniff"
   - name: Content-Security-Policy
     steps:
       - type: http
@@ -47,8 +47,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.content-security-policy ShouldNotBeNil
-          - result.headers.content-security-policy ShouldNotContainSubstring "unsafe"
+          - result.headers.Content-Security-Policy ShouldNotBeNil
+          - result.headers.Content-Security-Policy ShouldNotContainSubstring "unsafe"
   - name: X-Permitted-Cross-Domain-Policies
     steps:
       - type: http
@@ -58,8 +58,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.x-permitted-cross-domain-policies ShouldNotBeNil
-          - result.headers.x-permitted-cross-domain-policies ShouldEqual "none"
+          - result.headers.X-Permitted-Cross-Domain-Policies ShouldNotBeNil
+          - result.headers.X-Permitted-Cross-Domain-Policies ShouldEqual "none"
   - name: Referrer-Policy
     steps:
       - type: http
@@ -69,8 +69,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.referrer-policy ShouldNotBeNil
-          - result.headers.referrer-policy ShouldEqual "no-referrer"
+          - result.headers.Referrer-Policy ShouldNotBeNil
+          - result.headers.Referrer-Policy ShouldEqual "no-referrer"
   - name: Clear-Site-Data
     steps:
       - type: http
@@ -80,8 +80,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.clear-site-data ShouldNotBeNil
-          - result.headers.clear-site-data ShouldEqual '"cache","cookies","storage"'
+          - result.headers.Clear-Site-Data ShouldNotBeNil
+          - result.headers.Clear-Site-Data ShouldEqual '"cache","cookies","storage"'
   - name: Cross-Origin-Embedder-Policy
     steps:
       - type: http
@@ -91,8 +91,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.cross-origin-embedder-policy ShouldNotBeNil
-          - result.headers.cross-origin-embedder-policy ShouldEqual "require-corp"
+          - result.headers.Cross-Origin-Embedder-Policy ShouldNotBeNil
+          - result.headers.Cross-Origin-Embedder-Policy ShouldEqual "require-corp"
   - name: Cross-Origin-Opener-Policy
     steps:
       - type: http
@@ -102,8 +102,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.cross-origin-opener-policy ShouldNotBeNil
-          - result.headers.cross-origin-opener-policy ShouldEqual "same-origin"
+          - result.headers.Cross-Origin-Opener-Policy ShouldNotBeNil
+          - result.headers.Cross-Origin-Opener-Policy ShouldEqual "same-origin"
   - name: Cross-Origin-Resource-Policy
     steps:
       - type: http
@@ -113,8 +113,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.cross-origin-resource-policy ShouldNotBeNil
-          - result.headers.cross-origin-resource-policy ShouldEqual "same-origin"
+          - result.headers.Cross-Origin-Resource-Policy ShouldNotBeNil
+          - result.headers.Cross-Origin-Resource-Policy ShouldEqual "same-origin"
   - name: Permissions-Policy
     steps:
       - type: http
@@ -124,8 +124,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.permissions-policy ShouldNotBeNil
-          - result.headers.permissions-policy ShouldEqual "accelerometer=(),ambient-light-sensor=(),autoplay=(),battery=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),gamepad=(),geolocation=(),gyroscope=(),layout-animations=(self),legacy-image-formats=(self),magnetometer=(),microphone=(),midi=(),oversized-images=(self),payment=(),picture-in-picture=(),publickey-credentials-get=(),speaker-selection=(),sync-xhr=(self),unoptimized-images=(self),unsized-media=(self),usb=(),screen-wake-lock=(),web-share=(),xr-spatial-tracking=()"
+          - result.headers.Permissions-Policy ShouldNotBeNil
+          - result.headers.Permissions-Policy ShouldEqual "accelerometer=(),ambient-light-sensor=(),autoplay=(),battery=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),gamepad=(),geolocation=(),gyroscope=(),layout-animations=(self),legacy-image-formats=(self),magnetometer=(),microphone=(),midi=(),oversized-images=(self),payment=(),picture-in-picture=(),publickey-credentials-get=(),speaker-selection=(),sync-xhr=(self),unoptimized-images=(self),unsized-media=(self),usb=(),screen-wake-lock=(),web-share=(),xr-spatial-tracking=()"
   - name: Cache-Control
     steps:
       - type: http
@@ -135,8 +135,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.cache-control ShouldNotBeNil
-          - 'result.headers.cache-control ShouldEqual "no-store, max-age=0"'
+          - result.headers.Cache-Control ShouldNotBeNil
+          - 'result.headers.Cache-Control ShouldEqual "no-store, max-age=0"'
   - name: Feature-Policy
     steps:
       - type: http
@@ -149,7 +149,7 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.feature-policy ShouldBeNil
+          - result.headers.Feature-Policy ShouldBeNil
   - name: Public-Key-Pins
     steps:
       - type: http
@@ -162,7 +162,7 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.public-key-pins ShouldBeNil
+          - result.headers.Public-Key-Pins ShouldBeNil
   - name: Expect-CT
     steps:
       - type: http
@@ -177,8 +177,8 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.expect-ct ShouldBeNil
-  - name: X-Xss-Protection
+          - result.headers.Expect-CT ShouldBeNil
+  - name: X-XSS-Protection
     steps:
       - type: http
         method: GET
@@ -190,7 +190,7 @@ testcases:
         timeout: '{{.request_timeout_in_seconds}}'
         assertions:
           - result.statuscode ShouldEqual 200
-          - result.headers.x-xss-protection ShouldBeNil
+          - result.headers.X-XSS-Protection ShouldBeNil
   - name: SecurityHeaders-Rating
     skip:
       - internet_facing ShouldEqual true
