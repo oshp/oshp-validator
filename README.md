@@ -54,7 +54,7 @@ $ venom run --var="target_site=https://mysite.com" --var="logout_url=/logout" te
 
 :eye_speech_bubble: Live usage example:
 
-[![asciicast](https://asciinema.org/a/391137.svg)](https://asciinema.org/a/391137)
+[![Watch the video](demo.png)](demo.mp4)
 
 💡 **Hints:**
 
