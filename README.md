@@ -49,7 +49,7 @@ $ venom run --var="target_site=https://mysite.com" tests_suite.yml
 $ venom run --var="target_site=https://mysite.com" --var="logout_url=/logout" tests_suite.yml 
 ```
 
-:eye_speech_bubble: Live usage example (the parameter **internet_facing** does not exists anymore, see [here](https://github.com/OWASP/www-project-secure-headers/pull/193) for explanation):
+:eye_speech_bubble: Live usage example (the parameter `internet_facing` does not exists anymore, see [here](https://github.com/OWASP/www-project-secure-headers/pull/193) for explanation):
 
 [![Watch the video](demo.png)](demo.mp4)
 
