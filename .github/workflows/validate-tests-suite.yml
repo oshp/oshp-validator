@@ -27,7 +27,7 @@ jobs:
           ./venom version
       - name: Execute the test plan
         run: |
-          ./venom run --var="target_site=https://oshp-validator-mock.onrender.com" --var="internet_facing=true" --var="logout_url=/" tests_suite.yml
+          ./venom run --var="target_site=https://oshp-validator-mock.onrender.com" --var="logout_url=/" tests_suite.yml
           echo "[+] Venom log file content:"
           cat venom.log
 
