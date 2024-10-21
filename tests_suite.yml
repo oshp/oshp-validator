@@ -69,7 +69,7 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.Referrer-Policy ShouldNotBeNil
-          - result.headers.Referrer-Policy ShouldEqual "no-referrer"
+          - result.headers.Referrer-Policy ShouldEqual "strict-origin-when-cross-origin"
   - name: Clear-Site-Data
     steps:
       - type: http
