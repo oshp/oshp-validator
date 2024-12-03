@@ -7,32 +7,34 @@ assignees: righettod
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+> [!IMPORTANT]
+> Ensure to use the [latest release of venom](https://github.com/ovh/venom/releases) prior to open an bug 😉
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## Describe the bug
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+>  [!NOTE]
+> A clear and concise description of what the bug is.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## How To Reproduce?
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+>  [!NOTE]
+> Steps to reproduce the behavior.
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+## Screenshots
 
-**Additional context**
-Add any other context about the problem here.
+>  [!NOTE]
+> If applicable, add screenshots to help explain your problem.
+
+## Your technical context
+
+>  [!NOTE]
+> Technical context in which you discovered the bug.
+
+ * **OS:** [e.g. Windows 10 Pro]
+ * **Version of venom:** [e.g. 1.2.0]
+ * **Test site if possible:** [e.g. https://mysite.com]
+
+## Additional context
+
+>  [!NOTE]
+> Add any other context about the problem here.
