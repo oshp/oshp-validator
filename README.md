@@ -2,7 +2,7 @@
 
 [![Validate test suites](https://github.com/oshp/oshp-validator/actions/workflows/validate-tests-suite.yml/badge.svg?branch=main)](https://github.com/oshp/oshp-validator/actions/workflows/validate-tests-suite.yml)
 
-[Venom](https://github.com/ovh/venom) test suites to validate an [HTTP security response headers](https://owasp.org/www-project-secure-headers/#div-headers) configuration against [OSHP recommendation](https://owasp.org/www-project-secure-headers/#div-bestpractices).
+✅ [Venom](https://github.com/ovh/venom) test suites to validate an [HTTP security response headers](https://owasp.org/www-project-secure-headers/#div-headers) configuration against [OSHP recommendation](https://owasp.org/www-project-secure-headers/#div-bestpractices).
 
 🎯 The objective is to provide a way to validate the configuration of non-Internet exposed applications in a flexible/portable way.
 
@@ -21,7 +21,8 @@
 
 # Tests suite
 
-> **Note**: This tests suite is always synchronized with the latest OSHP recommendation.
+> [!NOTE]
+> ✅ This tests suite is always synchronized with the latest OSHP recommendation.
 
 📋 It is provided via this [single file](tests_suite.yml).
 
@@ -49,21 +50,19 @@ $ venom run --var="target_site=https://mysite.com" tests_suite.yml
 $ venom run --var="target_site=https://mysite.com" --var="logout_url=/logout" tests_suite.yml 
 ```
 
-:eye_speech_bubble: Live usage example (the parameter `internet_facing` does not exists anymore, see [here](https://github.com/OWASP/www-project-secure-headers/pull/193) for explanation):
+📽️ Live usage example (the parameter `internet_facing` does not exists anymore, see [here](https://github.com/OWASP/www-project-secure-headers/pull/193) for explanation):
 
 [![Watch the video](demo.png)](demo.mp4)
 
-💡 **Hints:**
-
-Venom returns a code different from zero when a test fail or when you try an update and your version is the latest one. Therefore, to prevent your script to fail then add `|| true` at the end of your command.
+💡 **Hints:** Venom returns a code different from zero when a test fail or when you try an update and your version is the latest one. Therefore, to prevent your script to fail then add `|| true` at the end of your command.
 
 # Reporting
 
-This [section](https://github.com/ovh/venom#export-tests-report) of the venom documentation describes the different formats supported for the integration in a CI/CD platform.
+📖 This [section](https://github.com/ovh/venom#export-tests-report) of the venom documentation describes the different formats supported for the integration in a CI/CD platform.
 
 # Tests suite mock service
 
-The python script [test_suite_mock.py](test_suite_mock.py) provides a mock endpoint returning an HTTP response, for which, all HTTP response headers recommended by the [OSHP](https://owasp.org/www-project-secure-headers/) will be set.
+🌍 The python script [test_suite_mock.py](test_suite_mock.py) provides a mock endpoint returning an HTTP response, for which, all HTTP response headers recommended by the [OSHP](https://owasp.org/www-project-secure-headers/) will be set.
 
 📦 It is automatically deployed on `https://oshp-validator-mock.onrender.com` and it is used, by this [CI workflow](.github/workflows/validate-tests-suite.yml), to test the venom tests suite.
 
