@@ -37,7 +37,8 @@
 | request_timeout_in_seconds | Maximum waiting time in seconds for response from the target app.                                                | 20                | No            |
 
 # How to use it?
-
+You can use local installed venom or venom in a container image.
+## Local Venom
 💻 Follow the steps below.
 
 1. Get a [release of venom](https://github.com/ovh/venom#installing) for your platform.
@@ -56,6 +57,12 @@ $ venom run --var="target_site=https://mysite.com" --var="logout_url=/logout" te
 
 💡 **Hints:** Venom returns a code different from zero when a test fail or when you try an update and your version is the latest one. Therefore, to prevent your script to fail then add `|| true` at the end of your command.
 
+## Container Image
+💻 Follow the steps below.
+
+```bash
+docker run --mount type=bind,source=$(pwd)/tests_suite.yml,target=/workdir/tests_suite.yml  ovhcom/venom:latest run --var="target_site=https://mysite.com" tests_suite.yml
+```
 # Reporting
 
 📖 This [section](https://github.com/ovh/venom#export-tests-report) of the venom documentation describes the different formats supported for the integration in a CI/CD platform.
