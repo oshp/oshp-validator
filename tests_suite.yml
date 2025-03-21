@@ -136,7 +136,7 @@ testcases:
           - result.statuscode ShouldEqual 200
           - result.headers.Cache-Control ShouldNotBeNil
           - 'result.headers.Cache-Control ShouldEqual "no-store, max-age=0"'
-  - name: Feature-Policy
+  - name: Feature-Policy (should not exist)
     steps:
       - type: http
         method: GET
@@ -149,7 +149,7 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.Feature-Policy ShouldBeNil
-  - name: Public-Key-Pins
+  - name: Public-Key-Pins (should not exist)
     steps:
       - type: http
         method: GET
@@ -162,7 +162,7 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.Public-Key-Pins ShouldBeNil
-  - name: Expect-CT
+  - name: Expect-CT (should not exist)
     steps:
       - type: http
         method: GET
@@ -177,7 +177,7 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.Expect-CT ShouldBeNil
-  - name: X-XSS-Protection
+  - name: X-XSS-Protection (should not exist)
     steps:
       - type: http
         method: GET
