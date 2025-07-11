@@ -158,8 +158,8 @@ testcases:
           - result.headers.Permissions-Policy ShouldContainSubstring serial=()
           - result.headers.Permissions-Policy ShouldContainSubstring speaker-selection=()
           - or:
-            - result.headers.Permissions-Policy ShouldContainSubstring sync-xhr=()
             - result.headers.Permissions-Policy ShouldContainSubstring sync-xhr=(self)
+            - result.headers.Permissions-Policy ShouldContainSubstring sync-xhr=()
           - result.headers.Permissions-Policy ShouldContainSubstring unload=()
           - result.headers.Permissions-Policy ShouldContainSubstring usb=()
           - result.headers.Permissions-Policy ShouldContainSubstring web-share=()
