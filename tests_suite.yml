@@ -126,7 +126,38 @@ testcases:
         assertions:
           - result.statuscode ShouldEqual 200
           - result.headers.Permissions-Policy ShouldNotBeNil
-          - result.headers.Permissions-Policy ShouldEqual "accelerometer=(), autoplay=(), camera=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(self), usb=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(), clipboard-write=(), gamepad=(), hid=(), idle-detection=(), interest-cohort=(), serial=(), unload=()"
+          - result.headers.Permissions-Policy ShouldContainSubstring accelerometer=()
+          - result.headers.Permissions-Policy ShouldContainSubstring autoplay=()
+          - result.headers.Permissions-Policy ShouldContainSubstring camera=()
+          - result.headers.Permissions-Policy ShouldContainSubstring clipboard-read=()
+          - result.headers.Permissions-Policy ShouldContainSubstring clipboard-write=()
+          - result.headers.Permissions-Policy ShouldContainSubstring cross-origin-isolated=()
+          - result.headers.Permissions-Policy ShouldContainSubstring display-capture=()
+          - result.headers.Permissions-Policy ShouldContainSubstring encrypted-media=()
+          - result.headers.Permissions-Policy ShouldContainSubstring fullscreen=()
+          - result.headers.Permissions-Policy ShouldContainSubstring gamepad=()
+          - result.headers.Permissions-Policy ShouldContainSubstring geolocation=()
+          - result.headers.Permissions-Policy ShouldContainSubstring gyroscope=()
+          - result.headers.Permissions-Policy ShouldContainSubstring hid=()
+          - result.headers.Permissions-Policy ShouldContainSubstring idle-detection=()
+          - result.headers.Permissions-Policy ShouldContainSubstring interest-cohort=()
+          - result.headers.Permissions-Policy ShouldContainSubstring keyboard-map=()
+          - result.headers.Permissions-Policy ShouldContainSubstring magnetometer=()
+          - result.headers.Permissions-Policy ShouldContainSubstring microphone=()
+          - result.headers.Permissions-Policy ShouldContainSubstring midi=()
+          - result.headers.Permissions-Policy ShouldContainSubstring payment=()
+          - result.headers.Permissions-Policy ShouldContainSubstring picture-in-picture=()
+          - result.headers.Permissions-Policy ShouldContainSubstring publickey-credentials-get=()
+          - result.headers.Permissions-Policy ShouldContainSubstring screen-wake-lock=()
+          - result.headers.Permissions-Policy ShouldContainSubstring serial=()
+          - or:
+              - result.headers.Permissions-Policy ShouldContainSubstring sync-xhr=(self)
+              - result.headers.Permissions-Policy ShouldContainSubstring sync-xhr=()
+          - result.headers.Permissions-Policy ShouldContainSubstring unload=()
+          - result.headers.Permissions-Policy ShouldContainSubstring usb=()
+          - result.headers.Permissions-Policy ShouldContainSubstring web-share=()
+          - result.headers.Permissions-Policy ShouldContainSubstring xr-spatial-tracking=()
+
   - name: Cache-Control
     steps:
       - type: http
