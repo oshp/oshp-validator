@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Get yamllint and wake-up the mirror endpoint
         run: |
           sudo apt-get install -y curl wget yamllint
