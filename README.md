@@ -1,3 +1,6 @@
+> [!CAUTION]
+> The project was transferred to the main repository of the OSHP project. Precisely into this [location](https://github.com/OWASP/www-project-secure-headers/tree/master/subprojects/validator).
+
 # OWASP Secure Headers Project validator
 
 [![Validate test suites](https://github.com/oshp/oshp-validator/actions/workflows/validate-tests-suite.yml/badge.svg?branch=main)](https://github.com/oshp/oshp-validator/actions/workflows/validate-tests-suite.yml)
